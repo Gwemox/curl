@@ -22,6 +22,13 @@
  *
  ***************************************************************************/
 
+/* 
+    * Modif pour Android compilation
+*/
+#ifdef __ANDROID__
+#   define HAVE_GLIBC_STRERROR_R 1
+#endif
+
 /*
  * Define WIN32 when build target is Win32 API
  */
