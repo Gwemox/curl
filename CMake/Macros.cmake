@@ -66,7 +66,7 @@ macro(CURL_INTERNAL_TEST_RUN CURL_TEST)
       set(CURL_TEST_ADD_LIBRARIES
         "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}")
     endif(CMAKE_REQUIRED_LIBRARIES)
-    if(OS STREQUAL android)
+    if(NOT OS STREQUAL android)
       message(STATUS "Performing Curl Test ${CURL_TEST}")
       try_run(${CURL_TEST} ${CURL_TEST}_COMPILE
         ${CMAKE_BINARY_DIR}
@@ -91,6 +91,6 @@ macro(CURL_INTERNAL_TEST_RUN CURL_TEST)
         file(APPEND "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeError.log"
           "\n\n")
       endif(${CURL_TEST}_COMPILE AND NOT ${CURL_TEST})
-    endif(OS STREQUAL android)
+    endif(NOT OS STREQUAL android)
   endif()
 endmacro(CURL_INTERNAL_TEST_RUN)
